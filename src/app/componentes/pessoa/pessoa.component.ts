@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { EnviaNomeService } from '../../services/envia-nome.service';
 
 @Component({
 	selector: 'app-pessoa',
@@ -13,26 +14,31 @@ export class PessoaComponent {
 	arial_label = "arial";
 	attr_teste = "attr_teste";
 	teste_02 = "attr-teste";
-	nomes = [{id: 1, nome: "Evandro Campos"}, {id: 2, nome: "Douglas Campos"}]
+	nomes = [{ id: 1, nome: "Evandro Campos" }, { id: 2, nome: "Douglas Campos" }]
 
 	atualizarNome(valor: string) {
 		this.meuNome = valor;
 	}
 
-	atualizarPessoa(valor: boolean){
+	atualizarPessoa(valor: boolean) {
 		this.ativo = valor;
 	}
 
-	pegarAtivo(){
+	pegarAtivo() {
 		return this.ativo;
 	}
 
-	pegarNome(evento: any){
+	escreverNomes() {
 		this.nomes.forEach(element => {
 			const div = document.getElementById("nome");
 			const p = document.createElement("p");
 			p.textContent = element.nome;
 			div?.appendChild(p);
 		});
+	}
+
+	private enviarNome = inject(EnviaNomeService);
+	enviarNomeSubmit() {
+		this.enviarNome.enviarNomesBackEnd([{ id: 1, nome: "Teste 01" }, { id: 2, nome: "Teste 02" }]);
 	}
 }

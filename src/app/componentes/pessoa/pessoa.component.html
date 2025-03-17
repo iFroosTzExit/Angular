@@ -2,9 +2,8 @@
 
 <p [attr.aria-label]="arial_label" [id]="atributo_nome" [attr.teste]="teste_02">Teste Componente dinâmico</p>
 
-<button (click)="pegarNome($event)">Clique Aqui</button>
-
-<div id="nome"><div>
+<button (click)="escreverNomes()">Clique Aqui</button>
+<button (click)="enviarNomeSubmit()">Enviar Nomes Back-End</button>
 
 @if(ativo){
     <h1>{{meuNome}}</h1>
@@ -15,3 +14,5 @@
 @for(item of nomes ; track item.id){
     <p id = {{item.id}}>{{item.nome}}</p>
 }
+
+<div id="nome"></div>
