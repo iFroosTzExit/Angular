@@ -1,0 +1,17 @@
+<p>Componente Pessoa Funcionando !</p>
+
+<p [attr.aria-label]="arial_label" [id]="atributo_nome" [attr.teste]="teste_02">Teste Componente dinâmico</p>
+
+<button (click)="pegarNome($event)">Clique Aqui</button>
+
+<div id="nome"><div>
+
+@if(ativo){
+    <h1>{{meuNome}}</h1>
+}@else{
+    <h1>Nome não Ativo</h1>
+}
+
+@for(item of nomes ; track item.id){
+    <p id = {{item.id}}>{{item.nome}}</p>
+}
